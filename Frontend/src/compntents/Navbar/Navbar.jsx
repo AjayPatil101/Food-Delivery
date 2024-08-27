@@ -24,8 +24,8 @@ const Navbar = ({setShowLogin}) => {
             <div className="navbar-right">
                 <img src={assets.search_icon} alt='' />
                 <div className="navbar-search-icon">
-                    <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
-                    <div className={getTotalCartAmount()?"dot":""}></div>
+                    <Link to={token?"/cart":"/"}><img src={assets.basket_icon} alt="" /></Link>
+                    <div className={getTotalCartAmount()&&token?"dot":""}></div>
                 </div>
                 {!token?<button onClick={()=>setShowLogin(true)}>sign in</button>:
                 <div className='navber-profile'>
