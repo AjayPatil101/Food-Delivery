@@ -1,0 +1,34 @@
+# Basic build settings
+[build]
+  # Directory to publish (the output directory of your build process)
+  publish = "build"
+
+  # Command to run for building your site (e.g., npm run build)
+  command = "npm run build"
+
+  # Directory containing your functions (if any)
+  functions = "functions"
+
+# Redirects configuration
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables
+[build.environment]
+  NODE_VERSION = "16.13.0"
+  REACT_APP_API_URL = "https://api.example.com"
+
+# Headers configuration
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+# Custom settings for Netlify plugins (if any)
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  [plugins.inputs]
+    thresholds.performance = 80
