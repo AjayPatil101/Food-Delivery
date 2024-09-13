@@ -5,12 +5,14 @@ import axios from 'axios'
 // import { food_list } from "../assets/assets";
 const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
-    const Url = "https://food-delivery-backend-md1b.onrender.com";
+    const [couponCode, setCouponCode] = useState("");
+    const [couponAmount, setCouponAmount] = useState(0);
+    const Url = "http://localhost:4000";
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
-            token?setCartItems((prev) => ({ ...prev, [itemId]: 1 })):"";
+            token ? setCartItems((prev) => ({ ...prev, [itemId]: 1 })) : "";
         } else {
             setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         }
@@ -79,7 +81,10 @@ const StoreContextProvider = (props) => {
         removeToCart,
         getTotalCartAmount,
         Url,
-        token, setToken
+        token, setToken,
+        couponCode, setCouponCode,
+        couponAmount, setCouponAmount,
+
     }
     return (
         <StoreContext.Provider value={contextValue} >

@@ -9,8 +9,11 @@ const Navbar = ({setShowLogin}) => {
     const navigate = useNavigate();
     const logout =()=>{
         localStorage.removeItem("token");
+        localStorage.removeItem("orderId");
+        localStorage.removeItem("userId");
         setToken("");
-        navigate("/")
+        navigate("/");
+        window.location.reload();
     }
     return (
         <div className='navbar'>

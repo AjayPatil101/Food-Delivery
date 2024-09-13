@@ -89,3 +89,73 @@
         justify-content: start;
     }
 }
+.button {
+    margin-top: 20px;
+}
+
+.button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: tomato;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin: 1px 5px ;
+}
+
+.button button:hover {
+    background-color: darkred; /* Changed hover background to create effect */
+}
+
+.coupon-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.coupon-item {
+    display: flex;
+    align-items: center; /* Aligns text and image vertically */
+    justify-content: space-between; /* Spaces out the text and image horizontally */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.coupon-item:hover {
+    background-color: #e9ecef;
+}
+
+.coupon-item p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.coupon-content {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensures the text and image container takes full width */
+}
+
+.coupon-text {
+    flex: 1; /* Makes the text take the available space */
+}
+
+.coupon-image img {
+    width: 50px; /* Adjust the image size */
+    height: auto;
+    margin-left: 10px;
+}
+
+/* Optional: Adjust the hover color effect for button */
+.button button:hover {
+    background-color: #ff6347; /* Change the button color on hover */
+    color: #fff;
+}

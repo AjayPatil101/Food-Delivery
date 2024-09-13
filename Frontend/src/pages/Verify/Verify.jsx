@@ -1,37 +1,50 @@
-import React, { useContext, useEffect } from 'react'
-import './Verify.css'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react';
+import './Verify.css';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
-import axios from 'axios'
+import axios from 'axios';
+
 const Verify = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const success = searchParams.get("success");
     const orderId = searchParams.get("orderId");
-    const { Url ,token} = useContext(StoreContext);
+    const userId = localStorage.getItem('userId');
+    const { Url, token } = useContext(StoreContext);
     const navigate = useNavigate();
-    const verifyPayment = async () => {
-        const response = await axios.post(`${Url}/api/order/verify`, { success, orderId }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        console.log(response);
+    const couponCode = localStorage.getItem('couponCode'); // Fix here
 
-        if (response.data.success) {
-            navigate("/myorders")
+    console.log(couponCode);
+
+    const verifyPayment = async () => {
+        try {
+            const response = await axios.post(
+                `${Url}/api/order/verify`, 
+                { success, orderId, userId, couponCode }, 
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            console.log(response);
+
+            localStorage.removeItem("couponCode")
+            if (response.data.success) {
+                navigate("/myorders");
+            } else {
+                navigate("/");
+            }
+        } catch (error) {
+            console.error("Error verifying payment:", error);
+            navigate("/"); 
         }
-        else {
-            navigate("/")
-        }
-    }
-    useEffect(() => { verifyPayment() }, [])
+    };
+
+    useEffect(() => {
+        verifyPayment();
+    }, [verifyPayment]); // Add verifyPayment to the dependency array if it changes
+
     return (
         <div className='verify'>
             <div className="spinner"></div>
-            {/* <p>{success}</p>
-      <p>{orderId}</p> */}
         </div>
-    )
-}
+    );
+};
 
-export default Verify
+export default Verify;
