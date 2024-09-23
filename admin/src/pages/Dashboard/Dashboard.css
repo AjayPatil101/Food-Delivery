@@ -1,0 +1,79 @@
+.container {
+    display: flex; 
+    height: 100vh;
+    justify-content: center; /* Center the child elements horizontally */
+    align-items: center; /* Center the child elements vertically */
+}
+  
+.left {
+    width: 60vw;
+    margin: 0px 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1); */
+    box-shadow: 10px 10px 50px;
+    border: 2px solid white;
+}
+  
+.right {
+    width: 20vw;
+    padding: 10px;
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    gap: 40px; /* Space between sections increased to 60px */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    /* box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);  */
+}
+  
+.top-sale, .bottom-sale, .average-sales {
+    background-color:white; /* Light background for each section */
+    border: 1px solid white; /* Border around each section */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Internal padding */
+    width: 100%; /* Full width of the right container */
+    text-align: center; /* Center text inside the sections */
+    /* box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1); */
+    box-shadow: 10px 10px 50px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack divs vertically */
+      align-items: stretch; /* Allow divs to take full width */
+    }
+  
+    .left, .right {
+      width: 100%; /* Full width on smaller screens */
+      display: flex; /* Enable Flexbox */
+    flex-direction: row;
+    justify-content: center; /* Center content vertically */
+    align-items: center;
+    }
+  }
+  @media (max-width: 550px) {
+    .container {
+      flex-direction: column; /* Stack divs vertically */
+      align-items: stretch; /* Allow divs to take full width */
+    }
+  
+    .left, .right {
+      width: 100%;
+      display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    }
+  }
+  .bottom-sale img{
+    width: 100px;
+    height: 100px;
+  }
+  .top-sale img{
+    width: 100px;
+    height: 100px;
+  }

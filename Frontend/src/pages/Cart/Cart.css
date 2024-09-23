@@ -88,6 +88,9 @@
     .cart-promocode{
         justify-content: start;
     }
+    .cart-items-item{
+        font-size: small;
+    }
 }
 .button {
     margin-top: 20px;

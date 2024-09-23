@@ -1,0 +1,10 @@
+.chart-container {
+    margin: 20px auto; /* Add margin around the chart, auto centers it horizontally */
+    padding: 10px; /* Optional: Add some padding inside the container */
+    border: 2px solid rgba(255, 99, 71, 0.5); /* Add a border with a lighter tomato color */
+    border-radius: 5px; /* Optional: Rounded corners for the border */
+    background-color: white; /* Optional: Background color for better contrast */
+    width: 80%; /* Set a width for the chart container */
+    max-width: 900px; /* Optional: Limit the maximum width */
+  }
+  

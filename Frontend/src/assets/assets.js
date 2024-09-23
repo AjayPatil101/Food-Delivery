@@ -60,6 +60,7 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import promoCodeImg from './promo-code-coupon.jpg'
+import profile from './profile.png'
 
 export const assets = {
     logo,
@@ -81,7 +82,8 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon,
-    promoCodeImg
+    promoCodeImg,
+    profile
 }
 
 export const menu_list = [
