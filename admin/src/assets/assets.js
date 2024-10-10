@@ -8,6 +8,9 @@ import parcel_icon from './parcel_icon.png'
 import Dashboard from './Dashboard.png'
 import down from './down.jpeg'
 import up from './up.jpg'
+import admin from './admin.png'
+import order from './order.png'
+import User from './User.png'
 
 export const assets ={
     logo,
@@ -19,7 +22,10 @@ export const assets ={
     Dashboard,
     profile,
     down,
-    up
+    up,
+    admin,
+    order,
+    User
 }
 
 export const url = 'http://localhost:4000'

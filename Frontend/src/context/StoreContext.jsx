@@ -7,7 +7,9 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const [couponCode, setCouponCode] = useState("");
     const [couponAmount, setCouponAmount] = useState(0);
-    const Url = "http://localhost:4000";
+    const Url = "https://food-delivery-backend-md1b.onrender.com";
+    const adminUrl = "https://playful-panda-0403a7.netlify.app";
+    const [role, setRole] = useState(null);
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const addToCart = async (itemId) => {
@@ -80,11 +82,11 @@ const StoreContextProvider = (props) => {
         addToCart,
         removeToCart,
         getTotalCartAmount,
-        Url,
+        Url, adminUrl,
         token, setToken,
         couponCode, setCouponCode,
         couponAmount, setCouponAmount,
-
+        role, setRole,
     }
     return (
         <StoreContext.Provider value={contextValue} >

@@ -8,6 +8,7 @@ import Orders from './pages/Orders/Orders'
 import { ToastContainer} from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/Dashboard/Dashboard'
+import User from './pages/User/User'
 
 const App = () => {
   const Url = 'https://food-delivery-backend-md1b.onrender.com';
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/add" element={<Add Url={Url}/>} />
           <Route path="/list" element={<List Url={Url}/>} />
           <Route path="/orders" element={<Orders Url={Url}/>} />
+          <Route path="/user" element={<User Url={Url}/>} />
         </Routes>
       </div>
     </div>
