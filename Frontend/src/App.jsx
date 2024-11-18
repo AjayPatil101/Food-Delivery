@@ -6,6 +6,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import { Route, Routes } from 'react-router-dom'
 import Footer from './compntents/Footer/Footer'
 import LoginPopup from './compntents/LoginPopup/LoginPopup'
+// import Signin from './compntents/Signin/Signin'
 import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <>
     {showLogin?<LoginPopup setShowLogin={setShowLogin} />:<></>}
+    {/* {showLogin?<Signin setShowLogin={setShowLogin} />:<></>} */}
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>
       <Routes>

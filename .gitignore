@@ -128,3 +128,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+admin/src/compntents/Navbar/Navbar.jsx
+admin/src/App.jsx

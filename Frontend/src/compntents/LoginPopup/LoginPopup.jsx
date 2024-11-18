@@ -5,8 +5,8 @@ import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios'
 const LoginPopup = ({ setShowLogin }) => {
     const [currState, setCurrState] = useState("Login");
-    const {Url,setToken}=useContext(StoreContext)
-    const {role,setRole}=useState("user");
+    const {Url,setToken,setRole}=useContext(StoreContext)
+    // const {role,setRole}=useState("user");
     const [data,setData]= useState({
         name:"",
         email:"",
@@ -29,10 +29,13 @@ const LoginPopup = ({ setShowLogin }) => {
             newUrl+="/api/user/register"
         }
         const response = await axios.post(newUrl,data)
+        console.log(response);
+        
         if(response.data.success){
             setToken(response.data.token)
             localStorage.setItem("token",response.data.token)
             localStorage.setItem("userId",response.data.userId)
+            setRole('user')
             setShowLogin(false);
             window.location.reload();
         }else{

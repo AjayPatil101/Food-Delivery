@@ -18,22 +18,41 @@ const Navbar = ({ setShowLogin }) => {
         navigate("/");
         window.location.reload();
     }
-    const setRoles = async()=>{
-        const userId = localStorage.getItem("userId");        
-        const response = await axios.get(`${Url}/api/user/role/${userId}`)
-        console.log(response);
+    const setRoles = async () => {
+        const userId = localStorage.getItem("userId");
         
-        if(response.data.success){
-            setRole(response.data.data.role);
-            console.log(role,response.data.data.role);
-            
-        }else{
-            alert(response.data.message)
+        // Ensure userId is valid
+        if (!userId) {
+            console.error('User ID not found in local storage');
+            return;
         }
-    }
+        console.log(userId);
+        
+        try {
+            const response = await axios.get(`${Url}/api/user/role/${userId}`);
+            console.log(response);
+    
+            if (response.data.success) {
+                setRole(response.data.data.role);
+                console.log(role, response.data.data.role);
+            } else {
+                alert(response.data.message);
+            }
+        } catch (error) {
+            console.error('Error fetching user role:', error.message);
+            if (error.response && error.response.status === 404) {
+                alert('User role not found. Please contact support.');
+            } else {
+                alert('Failed to fetch user role. Please try again later.');
+            }
+        }
+    };
+    
+
     useEffect(() => {
-        setRoles();
-    }, [setRoles]);
+        console.log(token);
+        if (token) setRoles();
+    }, [token]); // No need to include setRoles in the dependency array
 
     return (
         <div className='navbar'>
@@ -54,13 +73,12 @@ const Navbar = ({ setShowLogin }) => {
                     <div className='navber-profile'>
                         <img src={assets.profile_icon} alt='' />
                         <ul className="navber-profile-dropdown">
-                            {role === "admin" && (
-                                <li onClick={() => { window.location.href = adminUrl; }}>
+                        {role === "admin" && (
+                                <li onClick={() => navigate(adminUrl)}>
                                     <img src={assets.profile} className='admin' alt="Admin" />
                                     <p>Admin</p>
                                 </li>
                             )}
-
                             <li onClick={() => navigate('/myorders')}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
                             <hr />
                             <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
